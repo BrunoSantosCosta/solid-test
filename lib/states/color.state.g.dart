@@ -24,19 +24,19 @@ mixin _$ColorState on ColorStateBase, Store {
     });
   }
 
-  late final _$newColorAtom =
-      Atom(name: 'ColorStateBase.newColor', context: context);
+  late final _$newHexAtom =
+      Atom(name: 'ColorStateBase.newHex', context: context);
 
   @override
-  dynamic get newColor {
-    _$newColorAtom.reportRead();
-    return super.newColor;
+  dynamic get newHex {
+    _$newHexAtom.reportRead();
+    return super.newHex;
   }
 
   @override
-  set newColor(dynamic value) {
-    _$newColorAtom.reportWrite(value, super.newColor, () {
-      super.newColor = value;
+  set newHex(dynamic value) {
+    _$newHexAtom.reportWrite(value, super.newHex, () {
+      super.newHex = value;
     });
   }
 
@@ -44,11 +44,11 @@ mixin _$ColorState on ColorStateBase, Store {
       ActionController(name: 'ColorStateBase', context: context);
 
   @override
-  dynamic changeColor() {
+  dynamic generateRandomHexColor() {
     final _$actionInfo = _$ColorStateBaseActionController.startAction(
-        name: 'ColorStateBase.changeColor');
+        name: 'ColorStateBase.generateRandomHexColor');
     try {
-      return super.changeColor();
+      return super.generateRandomHexColor();
     } finally {
       _$ColorStateBaseActionController.endAction(_$actionInfo);
     }
@@ -58,7 +58,7 @@ mixin _$ColorState on ColorStateBase, Store {
   String toString() {
     return '''
 color: ${color},
-newColor: ${newColor}
+newHex: ${newHex}
     ''';
   }
 }
