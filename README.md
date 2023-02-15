@@ -22,8 +22,11 @@ Go to project root and execute the following command in console to get the requi
 flutter pub get 
 </pre>
 
-<h4>Step 2:</h4>
-run project
+<h4>Step 3:</h4>
+
+<pre>
+Run project
+</pre>
 
 ## technologies
 
