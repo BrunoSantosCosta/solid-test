@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => {
-        color.changeColor(),
+        color.generateRandomHexColor(),
       },
       child: Scaffold(
         appBar: AppBar(

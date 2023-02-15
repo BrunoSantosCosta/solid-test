@@ -2,17 +2,16 @@
 
 
 import 'dart:math';
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'dart:math' as math;
-import 'package:solid_test/screens/home_screen.dart';
+import 'package:solid_test/services/prefs_service.dart';
 part 'color.state.g.dart';
 
-Random random = Random();
 late int length;
 late String chars;
 late String hex;
+Random random = Random();
 var color = ColorState();
+
 class ColorState = ColorStateBase with _$ColorState;
 
 abstract class ColorStateBase with Store {
@@ -20,24 +19,19 @@ abstract class ColorStateBase with Store {
   ObservableList color = ObservableList();
 
   @observable
-  dynamic newColor;
+  dynamic newHex;
 
   @action
-  changeColor() {
-    randomColor =
-        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    newColor = randomColor;
-    return newColor;
+  generateRandomHexColor() {
+    length = 6;
+    chars = '0123456789ABCDEF';
+    newHex = '#';
+    while (length-- > 0) {
+      newHex += chars[(random.nextInt(16)) | 0];
+    }
+    PrefsService.save(newHex);
+    return newHex;
   }
-  // @action
-  // generateRandomHexColor() {
-  //   length = 6;
-  //   chars = '0123456789ABCDEF';
-  //   newColor = '0xff';
-  //   while (length-- > 0) newColor += chars[(random.nextInt(16)) | 0];
-  //   print(newColor);
-  //   return newColor;
-  // }
 }
 
 
